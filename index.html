@@ -21,20 +21,20 @@
         }
         .car{
              width: 50px;
-             height: 104px;
+             height: 80px;
              background-color: black;
              position: absolute;
              bottom: 120px;
-             background-image: url(img/car1.png);
+             background-image: url(img/green.png);
              background-size: cover;
         }
-        .vehicles{
+        .vehicle{
              width:  50px;
-             height: 104px;
+             height: 80px;
              background-color: black;
              position: absolute;
              bottom: 120px;
-             background-image: url(img/car2.png);
+             background-image: url(img/yellow.png);
              background-size: cover;
         }
         .line{
@@ -53,6 +53,7 @@
     </div>
     
     <script>
+
         const roadarea = document.querySelector('.road');
 
         let player = {step : 5};
@@ -70,12 +71,12 @@
             keys[ev.key] = false;
         }
 
+
         function movelines()
         {
             let roadlines = document.querySelectorAll('.line');
             roadlines.forEach(function(item)
             {
-
                 if(item.y >= 700)
                 {
                     item.y = item.y - 750;
@@ -86,8 +87,11 @@
             })
         }
 
-        function movevehicles()
+
+
+        function movevehicles(playercar)
         {
+            
             let vehicles = document.querySelectorAll('.vehicle');
             playercarboun = playercar.getBoundingClientRect();
 
@@ -109,7 +113,8 @@
                     item.y = -300;
                     item.style.left = Math.floor(Math.random() * 350) + 'px';
                 }
-                item.y;
+                item.y = item.y + player.step;
+                item.style.top = item.y + 'px';
 
             })
 
@@ -124,7 +129,7 @@
             {
 
                 movelines();
-                movevehicles();
+                movevehicles(playercar);
 
                 if(keys.ArrowUp && player.y > (road.top + 80))
                 {
@@ -166,8 +171,8 @@
             player.x = playercar.offsetLeft;
             player.y = playercar.offsetTop;
             
-            for(x = 0; x < 5; x++){
-
+            for(x = 0; x < 5; x++)
+            {
                 let roadlines = document.createElement('div');
                 roadlines.setAttribute('class', 'line');
                 roadlines.y = x * 150;
@@ -175,8 +180,9 @@
                 roadarea.appendChild(roadlines);
             }
 
-              {
-                for(x = 0; x < 4; x++){
+              
+            for(x = 0; x < 4; x++)
+                {
 
                     let vehicles = document.createElement('div');
                     vehicles.setAttribute('class', 'vehicle');
@@ -185,10 +191,7 @@
                     vehicles.style.left = Math.floor(Math.random() * 350) + 'px';
                     roadarea.appendChild(vehicles);
 
-
                 }
-            }
-            
 
         }
 
