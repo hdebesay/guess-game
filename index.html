@@ -29,8 +29,8 @@
              background-size: cover;
         }
         .vehicle{
-             width:  50px;
-             height: 80px;
+             width:  30px;
+             height: 60px;
              background-color: black;
              position: absolute;
              bottom: 120px;
@@ -106,6 +106,20 @@
                 (playercarboun.right < othercarboun.left)))
                 {
                     player.start = false;
+                    let  input = prompt("Which country has the highest population?");
+                        let answer = "china";
+
+                        if(input == answer)
+                            {
+                                alert(`Congratulations! keep playing`);
+                                setTimeout(function() {
+                                location.reload();
+                                });
+                            }else{
+                                prompt("guess again");
+                            }
+
+
                 }
 
                 if(item.y > 750)
